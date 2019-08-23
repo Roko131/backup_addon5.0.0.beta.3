@@ -550,7 +550,8 @@ module Backup
         end
 
         if path && File.exist?(path)
-          "-c --passphrase-file '#{path}'"
+          # "-c --passphrase-file '#{path}'"
+          "-c --batch --passphrase-file '#{path}'"
         else
           Logger.warn("Symmetric encryption options could not be set.")
           nil
