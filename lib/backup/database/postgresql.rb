@@ -60,7 +60,7 @@ module Backup
             pipeline << command
             dump_ext << ext
           end
-        end
+        end unless additional_options && additional_options.any?{|op| op =~ /-Z\d/ || op =~ /--compress=\d/} # unless compress option is built it
 
         pipeline << "#{utility(:cat)} > " \
           "'#{File.join(dump_path, dump_filename)}.#{dump_ext}'"
